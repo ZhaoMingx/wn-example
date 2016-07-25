@@ -2,16 +2,16 @@ enum MealType { "tartan-steak", "spaghetti", "pasta", "lasagna", "ramen", "sushi
 
 [
 Constructor,
-Constructor(MealType type),
-Constructor(MealType type, double size)
+Constructor(String type),
+Constructor(String type, double size)
 ]
 interface Meal {
-  attribute MealType type;
+  attribute String type;
   attribute double size; // in grams
   readonly attribute boolean isRawMeal;
 
-  void prepare(MealType type, double size);
-  void prepare(MealType type);
+  void prepare(String type, double size);
+  void prepare(String type);
 
   Promise<String> cook(String chefName);
 };
@@ -23,6 +23,14 @@ interface Tester {
   readonly attribute double PI;
   attribute int bar;
 };
+
+
+interface  DepthMask {
+    Promise<void>  init (Photo photo);
+    Promise<Image> computeFromCoordinate (Point coordinate, optional MaskParams maskParams);
+    Promise<Image> computeFromThreshold (float depthThreshold, optional MaskParams maskParams);
+};
+
 
 exception ChokingHazard {
   const short MEDIUM = 0;
